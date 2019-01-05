@@ -3,7 +3,6 @@ class SchedulesRoute extends PageRoute {
   constructor(router) {
     super("^[\/]schedules$", "Schedules", "#page_schedules", "#button_schedules", router);
     this.keysLoaded = false;
-    this.jobsLoaded = false;
 
     this._updateKeys = this._updateKeys.bind(this);
     this._updateMinion = this._updateMinion.bind(this);
@@ -14,11 +13,10 @@ class SchedulesRoute extends PageRoute {
 
     return new Promise(function(resolve, reject) {
       minions.resolvePromise = resolve;
-      if(minions.keysLoaded && minions.jobsLoaded) resolve();
+      if(minions.keysLoaded) resolve();
       minions.router.api.getScheduleList(null)
         .then(minions._updateMinions, minions._updateMinions);
       minions.router.api.getKeys().then(minions._updateKeys);
-      minions.router.api.getJobs().then(minions._updateJobs);
     });
   }
 
@@ -51,7 +49,7 @@ class SchedulesRoute extends PageRoute {
     }
 
     this.keysLoaded = true;
-    if(this.keysLoaded && this.jobsLoaded) this.resolvePromise();
+    if(this.keysLoaded) this.resolvePromise();
   }
 
   _updateOfflineMinion(container, hostname) {

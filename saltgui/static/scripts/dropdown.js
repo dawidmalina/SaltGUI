@@ -33,7 +33,7 @@ class DropDownMenu {
     default:
       // 25BA = BLACK RIGHT-POINTING POINTER
       // assume it will be a command menu
-      this.menuButton = Route._createDiv("menu-dropdown", "\u25BA");
+      this.menuButton = Route._createDiv("menu-dropdown", "\u2630");
       // hide the menu until it receives menu-items
       this.verifyAll();
     }

@@ -37,6 +37,12 @@ class CommandBox {
     }
   }
 
+  goTo(path) {
+    if(window.location.pathname === path) return;
+    window.history.pushState({}, undefined, path);
+    return;
+  }
+
   _registerEventListeners() {
     document.querySelector("#popup_runcommand")
       .addEventListener("click", this._hideManualRun);
@@ -127,8 +133,22 @@ class CommandBox {
   }
 
   _showManualRun(evt) {
-    const manualRun = document.querySelector("#popup_runcommand");
-    manualRun.style.display = "block";
+
+    this.api.isAuthenticated()
+    .then(valid_session => {
+      if (valid_session) {
+        const manualRun = document.querySelector("#popup_runcommand");
+        manualRun.style.width = "100%";
+        window.location.pathname + window.location.search
+      } else {
+        window.location.href = "/login"
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      window.location.href = "/login";
+      return
+    });
 
     document.body.style["overflow-y"] = "hidden";
     document.querySelector(".run-command pre").innerText = "Waiting for command...";
@@ -168,7 +188,7 @@ class CommandBox {
     if(evt.target.className !== "popup" && evt.target.className !== "nearlyvisiblebutton") return;
 
     const manualRun = document.querySelector("#popup_runcommand");
-    manualRun.style.display = "none";
+    manualRun.style.width = "0%";
 
     document.body.style["overflow-y"] = "scroll";
 

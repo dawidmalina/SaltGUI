@@ -10,23 +10,30 @@
     <link rel='stylesheet' type='text/css' href='static/stylesheets/schedules.css' />
     <link rel='stylesheet' type='text/css' href='static/stylesheets/pillars.css' />
     <link rel='stylesheet' type='text/css' href='static/stylesheets/dropdown.css' />
+    <link rel='stylesheet' type='text/css' href='static/stylesheets/navigation.css' />
     <link rel='shortcut icon' href='static/images/icon.png' />
   </head>
 
   <body>
-    <header id="header">
-      <h1 class='logo'>SaltGUI</h1>
-      <div class='menubar'>
-        <div class='menu_item' id='button_minions'>minions</div>
-        <div class='menu_item' id='button_keys'>keys</div>
-        <div class='menu_item' id='button_grains'>grains</div>
-        <div class='menu_item' id='button_schedules'>schedules</div>
-        <div class='menu_item' id='button_pillars'>pillars</div>
-        <div class='menu_item' id='button_logout'>logout</div>
-      </div>
-      <div class='fab' id='button_manualrun'>&gt;_</div>
-      <div id="hamburger_container"></div>
-    </header>
+    <div id="container">
+        <div class='navigation'>
+            <div class='logo' id='button_minions'>SaltGUI</div>
+            <ul>
+              <li><a href="#" id='button_minions'>Minions</a>
+                <ul>
+                  <li><a href='/' id='button_minions'>Status</a></li>
+                  <li><a href='/grains' id='button_grains'>Grains</a></li>
+                  <li><a href='/schedules' id='button_schedules'>Schedulers</a></li>
+                  <li><a href='/pillars' id='button_pillars'>Pillars</a></li>
+                </ul>
+              </li>
+              <li><a href='/keys' id='button_keys'>Keys</a></li>
+              <li><a href='/jobs' id='button_jobs'>Jobs</a></li>
+              <li><a href='#' id='button_manualrun'>Run Command</a></li>
+              <li><a href='#' id='button_logout'>Logout</a></li>
+            </ul>
+            <div id='hamburger_container'></div>
+        </div>
 
     <div class='route-container'>
 
@@ -77,10 +84,10 @@
               </tbody>
             </table>
           </div>
-          <div class='panel job-list'>
+          <!-- <div class='panel job-list'>
             <h1>Recent Jobs</h1>
             <table class='jobs'></table>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -96,10 +103,10 @@
               </tbody>
             </table>
           </div>
-          <div class='panel job-list'>
+          <!-- <div class='panel job-list'>
             <h1>Recent Jobs</h1>
             <table class='jobs'></table>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -115,17 +122,18 @@
               </tbody>
             </table>
           </div>
-          <div class='panel job-list'>
+          <!-- <div class='panel job-list'>
             <h1>Recent Jobs</h1>
             <table class='jobs'></table>
-          </div>
+          </div> -->
         </div>
       </div>
 
       <div class='route' id='page_grainsminion'>
         <div class='dashboard'>
           <div id="grainsminion_page" class='panel minion-list'>
-            <div class='nearlyvisiblebutton' id='button_close_grainsminion'>&#x2715;</div>
+            <!-- todo why i can't remove it ? -->
+            <div class='nearlyvisiblebutton' id='button_close_grainsminion'></div>
             <h1 id="grainsminion_title">Grains on ...</h1>
             <table id="grainsminion_list" class='grains sortable'>
               <thead>
@@ -135,10 +143,10 @@
               </tbody>
             </table>
           </div>
-          <div class='panel job-list'>
+          <!-- <div class='panel job-list'>
             <h1>Recent Jobs</h1>
             <table class='jobs'></table>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -154,17 +162,18 @@
               </tbody>
             </table>
           </div>
-          <div class='panel job-list'>
+          <!-- <div class='panel job-list'>
             <h1>Recent Jobs</h1>
             <table class='jobs'></table>
-          </div>
+          </div> -->
         </div>
       </div>
 
       <div class='route' id='page_schedulesminion'>
         <div class='dashboard'>
           <div id="schedulesminion_page" class='panel minion-list'>
-            <div class='nearlyvisiblebutton' id='button_close_schedulesminion'>&#x2715;</div>
+            <!-- todo why i can't remove it ? -->
+            <div class='nearlyvisiblebutton' id='button_close_schedulesminion'></div>
             <h1 id="schedulesminion_title">Schedules on ...</h1>
             <table id="schedulesminion_list" class='schedules sortable'>
               <thead>
@@ -174,10 +183,10 @@
               </tbody>
             </table>
           </div>
-          <div class='panel job-list'>
+          <!-- <div class='panel job-list'>
             <h1>Recent Jobs</h1>
             <table class='jobs'></table>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -193,17 +202,18 @@
               </tbody>
             </table>
           </div>
-          <div class='panel job-list'>
+          <!-- <div class='panel job-list'>
             <h1>Recent Jobs</h1>
             <table class='jobs'></table>
-          </div>
+          </div> -->
         </div>
       </div>
 
       <div class='route' id='page_pillarsminion'>
         <div class='dashboard'>
           <div id="pillarsminion_page" class='panel minion-list'>
-            <div class='nearlyvisiblebutton' id='button_close_pillarsminion'>&#x2715;</div>
+            <!-- todo why i can't remove it ? -->
+            <div class='nearlyvisiblebutton' id='button_close_pillarsminion'></div>
             <h1 id="pillarsminion_title">Pillars on ...</h1>
             <table id="pillarsminion_list" class='pillars sortable'>
               <thead>
@@ -213,10 +223,10 @@
               </tbody>
             </table>
           </div>
-          <div class='panel job-list'>
+          <!-- <div class='panel job-list'>
             <h1>Recent Jobs</h1>
             <table class='jobs'></table>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -226,6 +236,21 @@
           <h1 class='function'></h1>
           <h2 class='time'></h2>
           <pre class="output">...</pre>
+        </div>
+      </div>
+
+      <div class='route' id='page_jobs'>
+        <div class='dashboard'>
+          <div id='jobs_page' class='panel jobs-list'>
+            <h1 id="jobs_title">Recent Jobs</h1>
+            <table id="jobs" class='jobs sortable'>
+              <thead>
+              <tr><th>JID</th><th>Target</th><th>Function</th><th>Arguments</th><th>Start Time</th><th class="sorttable_nosort"></th></tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
@@ -254,6 +279,7 @@
     <script src='static/scripts/routes/login.js'></script>
     <script src='static/scripts/routes/page.js'></script>
     <script src='static/scripts/routes/job.js'></script>
+    <script src='static/scripts/routes/jobs.js'></script>
     <script src='static/scripts/routes/minions.js'></script>
     <script src='static/scripts/routes/keys.js'></script>
     <script src='static/scripts/routes/grains.js'></script>
@@ -266,6 +292,7 @@
     <script src='static/scripts/router.js'></script>
     <!-- see https://www.kryogenix.org/code/browser/sorttable/ -->
     <script type="text/javascript" src="static/sorttable/sorttable.js"></script>
+    </div>
   </body>
 
 </html>

@@ -52,6 +52,7 @@ pre .hostname {
 table {
   min-width: 100%;
   border-spacing: 5px;
+  border-collapse: collapse;
 }
 
 table tr th {
@@ -96,6 +97,17 @@ table tr td:last-of-type {
 
 .run-command-button:hover {
   color: #2e7d32;
+}
+
+.jobs th, .jobs td,
+.schedules th, .schedules td,
+.pillars th, .pillars td,
+.grains th, .grains td,
+.minions th, .minions td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: #505050;
 }
 
 .minions td.address {
@@ -168,10 +180,6 @@ table tr td:last-of-type {
   padding-right: 5px;
 }
 
-#popup_runcommand {
-  display: none;
-}
-
 .jobs td .target {
   font-weight: 500;
   font-size: 18px;
@@ -188,14 +196,14 @@ table tr td:last-of-type {
   font-size: 11px;
 }
 
-.jobs td:hover {
-  background-color: whitesmoke;
+.schedules tr:hover, .grains tr:hover,
+.pillars tr:hover, .jobs tr:hover,
+.minions tr:hover, .jobs tr:hover {
+  background: rgba(0, 0, 0, 0.15);
   cursor: pointer;
-}
-
-.job-list {
-  /* the left panel has the default 100%, therefore the radio is 2/3 vs 1/3 */
-  flex-basis: 50%;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 @media (max-width: 800px) {

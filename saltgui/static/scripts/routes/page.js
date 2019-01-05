@@ -216,7 +216,7 @@ class PageRoute extends Route {
 
   _updateJobs(data) {
     const jobContainer = this.getPageElement().querySelector(".jobs");
-    jobContainer.innerText = "";
+    //jobContainer.innerText = "";
     const jobs = this._jobsToArray(data.return[0]);
     this._sortJobs(jobs);
 
@@ -259,7 +259,7 @@ class PageRoute extends Route {
       shown = shown + 1;
     }
     this.jobsLoaded = true;
-    if(this.keysLoaded && this.jobsLoaded) this.resolvePromise();
+    if(this.jobsLoaded) this.resolvePromise();
   }
 
   _runningJobs(data) {
@@ -286,30 +286,32 @@ class PageRoute extends Route {
   _addJob(container, job) {
     const tr = document.createElement("tr");
 
-    const td = document.createElement("td");
-    tr.appendChild(td);
-
-    td.id = "job" + job.id;
+    const jidText = job.id;
+    tr.appendChild(Route._createTd("JID", jidText));
 
     const targetText = window.makeTargetText(job["Target-type"], job.Target);
-    td.appendChild(Route._createDiv("target", targetText));
+    tr.appendChild(Route._createTd("Target", targetText));
 
     const functionText = job.Function;
-    td.appendChild(Route._createDiv("function", functionText));
+    tr.appendChild(Route._createTd("Function", functionText));
+
+    const argumentText = job.Argument;
+    tr.appendChild(Route._createTd("Argument", argumentText ? argumentText : ""));
 
     const startTimeText = job.StartTime;
-    td.appendChild(Route._createDiv("time", startTimeText));
+    tr.appendChild(Route._createTd("Start Time", startTimeText));
 
-    container.appendChild(tr);
+    const menu = new DropDownMenu(tr);
+    menu.addMenuItem("Show&nbsp;job&nbsp;details", function(evt) {
+      window.location.assign("/job?id=" + encodeURIComponent(job.id));
+    }.bind(this));
 
-    tr.addEventListener("click", this._createJobListener(job.id));
-  }
-
-  _createJobListener(id) {
-    const router = this.router;
-    return function() {
-      router.goTo("/job?id=" + encodeURIComponent(id));
-    };
+    // fill out the number of columns to that of the header
+    while(tr.cells.length < container.tHead.rows[0].cells.length) {
+      tr.appendChild(Route._createTd("", ""));
+    }
+    
+    container.tBodies[0].appendChild(tr);
   }
 
   _jobsToArray(jobs) {

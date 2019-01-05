@@ -15,6 +15,7 @@ class Router {
     this.registerRoute(new SchedulesMinionRoute(this));
     this.registerRoute(new PillarsRoute(this));
     this.registerRoute(new PillarsMinionRoute(this));
+    this.registerRoute(new JobsRoute(this));
     this.registerRoute(new JobRoute(this));
 
     this._registerEventListeners();
@@ -24,6 +25,7 @@ class Router {
         valid_session ? window.location.pathname + window.location.search : "/login"))
       .catch(error => {
         console.error(error);
+        document.querySelector(".navigation").style.display = "none";
         this.goTo("/login");
       });
   }
@@ -67,6 +69,11 @@ class Router {
     document.querySelector("#button_pillars")
       .addEventListener('click', _ => {
         window.location.replace("/pillars");
+      });
+
+      document.querySelector("#button_jobs")
+      .addEventListener('click', _ => {
+        window.location.replace("/jobs");
       });
   }
 
