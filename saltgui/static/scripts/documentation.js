@@ -54,6 +54,7 @@ class Documentation {
     const button = document.querySelector(".run-command input[type='submit']");
     if(button.disabled) return;
     const output = document.querySelector(".run-command pre");
+    const checkbox = document.getElementById("checkbox-label");
 
     let target = document.querySelector(".run-command #target").value;
     // the help text is taken from the first minion that answers
@@ -70,6 +71,7 @@ class Documentation {
 
     button.disabled = true;
     output.innerText = "Loading...";
+    checkbox.style.display = "none";
 
     let docCommand;
     let dummyCommand;

@@ -158,6 +158,7 @@ input[type='submit'] {
   margin-bottom: 0;
   width: 20%;
   min-width: 200px;
+  float: left;
 }
 
 .run-command {

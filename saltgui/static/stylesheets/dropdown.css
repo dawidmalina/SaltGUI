@@ -50,3 +50,15 @@ header .menu-dropdown-content {
 .run-command-button:hover .menu-dropdown-content {
   display: block;
 }
+
+/* Allow to change humburger with cross mark */
+.run-command-button div.menu-dropdown span {
+  position: relative;
+  content: '≡'
+}
+.run-command-button:hover div.menu-dropdown span {
+  display: none;
+}
+.run-command-button:hover div.menu-dropdown:after {
+  content: 'x';
+}

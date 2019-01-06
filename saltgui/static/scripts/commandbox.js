@@ -14,7 +14,6 @@ class CommandBox {
     this.documentation = new Documentation(this);
     this._registerEventListeners();
 
-    RunType.createMenu();
     TargetType.createMenu();
 
     const title = document.querySelector(".run-command #templatemenuhere");
@@ -108,6 +107,7 @@ class CommandBox {
 
     const target = document.querySelector(".run-command #target").value;
     const command = document.querySelector(".run-command #command").value;
+    const checkbox = document.getElementById("checkbox-label");
 
     const tgtType = TargetType.menuTargetType._value;
 
@@ -116,6 +116,7 @@ class CommandBox {
 
     button.disabled = true;
     output.innerText = "Loading...";
+    checkbox.style.display = "none";
 
     func.then(response => {
       this._onRunReturn(response.return[0], command);
@@ -129,7 +130,9 @@ class CommandBox {
     if(command.startsWith("wheel.")) minions = ["WHEEL"];
     Output.addResponseOutput(outputContainer, minions, response, command);
     const button = document.querySelector(".run-command input[type='submit']");
+    const checkbox = document.getElementById("checkbox-label");
     button.disabled = false;
+    checkbox.style.display = "block";
   }
 
   _showManualRun(evt) {
@@ -155,8 +158,6 @@ class CommandBox {
 
     const target = document.querySelector(".run-command #target").value;
     TargetType.autoSelectTargetType(target);
-
-    RunType.setRunTypeDefault();
 
     // (re-)populate the dropdown box
     const targetlist = document.getElementById("targetlist");
@@ -193,7 +194,6 @@ class CommandBox {
     document.body.style["overflow-y"] = "scroll";
 
     // reset to default, so that its value is initially hidden
-    RunType.setRunTypeDefault();
     TargetType.setTargetTypeDefault();
 
     // test whether the command may have caused an update to the list

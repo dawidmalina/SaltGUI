@@ -11,6 +11,7 @@
     <link rel='stylesheet' type='text/css' href='static/stylesheets/pillars.css' />
     <link rel='stylesheet' type='text/css' href='static/stylesheets/dropdown.css' />
     <link rel='stylesheet' type='text/css' href='static/stylesheets/navigation.css' />
+    <link rel='stylesheet' type='text/css' href='static/stylesheets/run.css' />
     <link rel='shortcut icon' href='static/images/icon.png' />
   </head>
 
@@ -262,7 +263,12 @@
         <div><h1>Manual Run</h1><p style="display: inline" id="templatemenuhere"></p></div>
         <div id="targetbox"><input list="targetlist" id='target' type='text' placeholder="Target"/><datalist id="targetlist"/></div>
         <div id="cmdbox"><input id='command' type='text' placeholder="Command"/></div>
-        <div id="runblock"><input id="run_command" type='submit' value="Run command"/></div>
+        <div id="runblock">
+          <input id="run_command" type='submit' value="Run command"/>
+          <label id="checkbox-label" class="checkbox-label">Async
+            <input id="run_checkbox" type="checkbox"/>
+            <span class="checkmark"></span>
+          </label>
         <pre class='output'>Waiting for command...</pre>
       </div>
     </div>

@@ -223,7 +223,7 @@ class PageRoute extends Route {
     //Add seven most recent jobs
     let shown = 0;
     let i = 0;
-    while(shown < 7 && jobs[i] !== undefined) {
+    while(shown < 50 && jobs[i] !== undefined) {
       const job = jobs[i];
       i = i + 1;
       if(job.Function === "grains.append") continue;

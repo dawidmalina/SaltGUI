@@ -19,21 +19,21 @@ class DropDownMenu {
     switch (element.id) {
     case "hamburger_container":
       // 2261 = MATHEMATICAL OPERATOR IDENTICAL TO (aka "hamburger")
-      this.menuButton = Route._createDiv("menu-dropdown", "\u2261");
-      this.menuDropdown.classList.add("hamburger");
+      this.menuButton = Route._createHtmlDiv("menu-dropdown", "<span>\u2261</span>");
+      this.menuDropdown.classList.add("mainmenumini");
       break;
 
-    case "cmdbox":
-      // 1F4D6 (D83D+DCD6) = A BOOK
-      this.menuButton = Route._createDiv("menu-dropdown", "\uD83D\uDCD6");
-      // hide the menu until it receives menu-items
-      this.verifyAll();
-      break;
+    // case "cmdbox":
+    //   // 1F4D6 (D83D+DCD6) = A BOOK
+    //   this.menuButton = Route._createDiv("menu-dropdown", "\uD83D\uDCD6");
+    //   // hide the menu until it receives menu-items
+    //   this.verifyAll();
+    //   break;
 
     default:
       // 25BA = BLACK RIGHT-POINTING POINTER
       // assume it will be a command menu
-      this.menuButton = Route._createDiv("menu-dropdown", "\u2630");
+      this.menuButton = Route._createHtmlDiv("menu-dropdown", "<span>\u2261</span>");
       // hide the menu until it receives menu-items
       this.verifyAll();
     }
@@ -86,7 +86,7 @@ class DropDownMenu {
     // in the menu values, rather than their actions.
     // Use a slightly different clue for that.
     // 25BC = BLACK DOWN-POINTING TRIANGLE
-    this.menuButton.innerHTML = title + "&nbsp;\u25BC";
+    // this.menuButton.innerHTML = title + "&nbsp;\uFE19";
   }
 
   showMenu() {
